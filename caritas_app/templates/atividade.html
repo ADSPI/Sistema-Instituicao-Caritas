@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <title>Atividades</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+    integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <style>
+    a.mudacor:hover {
+      background-color: #F02929;
+    }
+  </style>
+</head>
+
+<body style="background-color: #E6E6E6">
+
+  <!-- Aqui começa o Menu -->
+
+  {% include "navbar.html" %}
+  <br>
+
+  <!-- Aqui começa a parte de baixo de dicas -->
+
+  <div class="container px-0 " style="background-color: #F02929;border-radius: 25px">
+
+    <h2 class="font-weight-bolder ml-5 pt-1 text-white"> Cadastros: Atividades </h2>
+
+    <div class="container-fluid bg-white " style="border-radius: 25px">
+      <div style="height: 30px"></div>
+      <br>
+      <!-- ************************ começar pagina aqui ************************************* -->
+
+      <div class="text-center">
+        <a href="{% url 'url_atividade_cadastro' %}">
+          <button type="button" class="btn text-white px-5 font-weight-bolder"
+            style="background-color: #F02929;border-radius: 25px"> NOVO +</button>
+        </a>
+      </div>
+
+      <div style="height: 30px"></div>
+
+      <div class="container w-75 mx-auto">
+
+        <form class="form-inline" method="GET">
+          {% csrf_token %}
+          <input type="text" class="form-control bg-light" placeholder="Digite aqui sua pesquisa e clique na LUPA (pesquise pelo código)"
+            name="pesquisa" style="width: 94%;border-radius: 25px">
+          <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+        </form>
+
+      </div>
+
+      <div style="height: 30px"></div>
+
+      <div class="w-75 mx-auto">
+        <table class="table table-hover table-bordered">
+          <thead style="background-color: #F02929; color: white">
+            <tr>
+              <th>Código</th>
+              <th>Instrutor</th>
+              <th>Oficina</th>
+              <th>Abrir</th>
+              <th>Excluir</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for atividade in atividades %}
+              <tr>
+                <td>{{ atividade.cod_atividade }}</td>
+                <td>{{ atividade.cod_instrutor }}</td>
+                <td>{{ atividade.cod_oficina }}</td>
+                <th><a href="{% url 'url_atividade_update' atividade.cod_atividade %}">Abrir</th></a>
+                <th><a href="{% url 'url_atividade_delete' atividade.cod_atividade %}">Excluir</th></a>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ******************  final da pagina ************************* -->
+      <br>
+
+      <div style="height: 30px"></div>
+    </div>
+
+  </div>
+</body>
+
+</html>

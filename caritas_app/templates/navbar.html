@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-sm navbar-dark pt-4 pb-4" style="background-color: #F02929">
+
+    <a class="navbar-brand justify-content-middle" href="{% url 'url_menu' %}"><i class="fas fa-user"></i> Olá, <span
+        class="font-weight-bolder"> {{ user.get_username }}</span></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <!-- Links -->
+      <ul class="navbar-nav font-weight-bolder mx-auto">
+
+        <!-- Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+            CADASTROS
+          </a>
+          <div class="dropdown-menu bg-dark">
+            <!--  <a class="dropdown-item text-white mudacor" href="#">USUÁRIOS</a> -->
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_responsavel' %}">RESPONSÁVEIS</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_instrutor' %}">INSTRUTORES</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_oficina' %}">OFICINAS</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_espaco' %}">ESPAÇOS</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_periodo' %}">PERÍODOS</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_atendido' %}">ATENDIDO</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_atividade' %}">ATIVIDADES</a>
+            <a class="dropdown-item text-white mudacor" href="{% url 'url_turma' %}">TURMAS</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'url_matriculados' %}">MATRÍCULAS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'url_chamadas' %}">CHAMADA</a>
+        </li>
+      </ul>
+
+      <a class="navbar-brand justify-content-end font-weight-bolder" href="{% url 'url_logout' %}">SAIR <i
+          class="fas fa-sign-out-alt"></i></a>
+
+    </div>
+  </nav>
